@@ -1,7 +1,6 @@
 {{ mode }}
 
-<!-- tu byłem! -->
-<ng-template [ngIf]="this.mode === 'show'">
+<ng-template [ngIf]="this.mode === 'show'" [ngIfElse]="formTplPlacki">
   <div class="card">
     <div class="card-body">
       <dl>
@@ -28,7 +27,12 @@
   </div>
 </ng-template>
 
-<ng-template [ngIf]="this.mode === 'edit'">
+
+
+<!-- ... -->
+
+
+<ng-template #formTplPlacki>
   <div class="card">
     <div class="card-body">
       <div class="form-group">
