@@ -2,7 +2,9 @@
 
 
 
-<ng-template [ngIf]="this.mode === 'show'" [ngIfThen]="showTpl" [ngIfElse]="formTplPlacki"></ng-template>
+<!-- <ng-template [ngIf]="this.mode === 'show'" [ngIfThen]="showTpl" [ngIfElse]="formTplPlacki"></ng-template> -->
+
+<div *ngIf="this.mode === 'show'; then showTpl; else formTplPlacki"></div>
 
 
 <ng-template #showTpl>
