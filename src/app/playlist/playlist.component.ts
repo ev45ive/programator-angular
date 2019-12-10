@@ -50,6 +50,11 @@ export class PlaylistComponent {
 
   constructor(cdr: ChangeDetectorRef) {
     // cdr.detectChanges()
+
+    setInterval(()=>{
+      const last = this.playlists.pop()
+      this.playlists.unshift(last)
+    },1000 )
   }
 
   ngOnInit() {}
