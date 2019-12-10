@@ -2,18 +2,23 @@
   <div class="col">
     <div class="list-group">
 
-
+<!-- 
       <ng-template
         ngFor
         [ngForOf]="playlists"
-        
-        let-playlist="$implicit"
+
+        let-playlist
         let-i="index"
       >
         <div class="list-group-item">
           {{ i + 1 }}. {{ playlist.name }}
         </div>
-      </ng-template>
+      </ng-template> -->
+
+
+      <div class="list-group-item" *ngFor="let playlist of playlists; let i = index">
+          {{ i + 1 }}. {{ playlist.name }}
+      </div>
 
     </div>
   </div>
