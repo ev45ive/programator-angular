@@ -1,54 +1,63 @@
-{{ mode }}
+<div class="row">
+  <div class="col">
+    <div class="list-group">
 
 
+      <ng-template
+        ngFor
+        [ngForOf]="playlists"
+        
+        let-playlist="$implicit"
+        let-i="index"
+      >
+        <div class="list-group-item">
+          {{ i + 1 }}. {{ playlist.name }}
+        </div>
+      </ng-template>
 
-<!-- <ng-template [ngIf]="this.mode === 'show'" [ngIfThen]="showTpl" [ngIfElse]="formTplPlacki"></ng-template> -->
-
-<div *ngIf="this.mode === 'show'; then showTpl; else formTplPlacki"></div>
-
-
-<ng-template #showTpl>
-  <div class="card">
-    <div class="card-body">
-      <dl>
-        <dt>Name:</dt>
-        <dd>{{ playlist.name }}</dd>
-
-        <dt>Favourite:</dt>
-        <dd>
-          {{ playlist.favorite ? "Yes" : "No" }}
-        </dd>
-
-        <dt>Color:</dt>
-        <dd
-          style="border: 1px solid red"
-          [style.color]="playlist.color"
-          [style.background-color]="playlist.color"
-        >
-          {{ playlist.color }}
-        </dd>
-      </dl>
-
-      <input type="button" value="Edit" (click)="edit()" />
     </div>
   </div>
-</ng-template>
+  <div class="col">
+    <div class="card" *ngIf="this.mode === 'show'">
+      <div class="card-body">
+        <dl>
+          <dt>Name:</dt>
+          <dd>{{ playlist.name }}</dd>
 
-<ng-template #formTplPlacki>
-  <div class="card">
-    <div class="card-body">
-      <div class="form-group">
-        <label>Name:</label>
-        <input
-          type="text"
-          class="form-control"
-          [value]="playlist.name"
-          (input)="playlist.name = $event.target.value"
-        />
-        {{ 170 - playlist.name.length }} / 170
+          <dt>Favourite:</dt>
+          <dd>
+            {{ playlist.favorite ? "Yes" : "No" }}
+          </dd>
+
+          <dt>Color:</dt>
+          <dd
+            style="border: 1px solid red"
+            [style.color]="playlist.color"
+            [style.background-color]="playlist.color"
+          >
+            {{ playlist.color }}
+          </dd>
+        </dl>
+
+        <input type="button" value="Edit" (click)="edit()" />
       </div>
+    </div>
 
-      <input type="button" value="Cancel" (click)="cancel()" />
+    <div class="card" *ngIf="this.mode === 'edit'">
+      <div class="card-body">
+        <div class="form-group">
+          <label>Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            [value]="playlist.name"
+            (input)="playlist.name = $event.target.value"
+          />
+          {{ 170 - playlist.name.length }} / 170
+        </div>
+
+        <input type="button" value="Cancel" (click)="cancel()" />
+      </div>
     </div>
   </div>
-</ng-template>
+</div>
