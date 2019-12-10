@@ -1,42 +1,48 @@
 {{ mode }}
 
-<div class="card" [hidden]="this.mode !== 'show'">
-  <div class="card-body">
-    <dl>
-      <dt>Name:</dt>
-      <dd>{{ playlist.name }}</dd>
+<!-- tu byłem! -->
+<ng-template [ngIf]="this.mode === 'show'">
+  <div class="card">
+    <div class="card-body">
+      <dl>
+        <dt>Name:</dt>
+        <dd>{{ playlist.name }}</dd>
 
-      <dt>Favourite:</dt>
-      <dd>
-        {{ playlist.favorite ? "Yes" : "No" }}
-      </dd>
+        <dt>Favourite:</dt>
+        <dd>
+          {{ playlist.favorite ? "Yes" : "No" }}
+        </dd>
 
-      <dt>Color:</dt>
-      <dd
-        style="border: 1px solid red"
-        [style.color]="playlist.color"
-        [style.background-color]="playlist.color"
-      >
-        {{ playlist.color }}
-      </dd>
-    </dl>
+        <dt>Color:</dt>
+        <dd
+          style="border: 1px solid red"
+          [style.color]="playlist.color"
+          [style.background-color]="playlist.color"
+        >
+          {{ playlist.color }}
+        </dd>
+      </dl>
 
-    <input type="button" value="Edit" (click)="edit()" />
-  </div>
-</div>
-
-<div class="card" [hidden]="this.mode !== 'edit'">
-  <div class="card-body">
-    
-    <div class="form-group">
-      <label>Name:</label>
-      <input type="text" class="form-control"
-        [value]="playlist.name"
-        (input)="playlist.name = $event.target.value"  
-      />
-      {{ 170 - playlist.name.length }} / 170
+      <input type="button" value="Edit" (click)="edit()" />
     </div>
-
-    <input type="button" value="Cancel" (click)="cancel()" />
   </div>
-</div>
+</ng-template>
+
+<ng-template [ngIf]="this.mode === 'edit'">
+  <div class="card">
+    <div class="card-body">
+      <div class="form-group">
+        <label>Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          [value]="playlist.name"
+          (input)="playlist.name = $event.target.value"
+        />
+        {{ 170 - playlist.name.length }} / 170
+      </div>
+
+      <input type="button" value="Cancel" (click)="cancel()" />
+    </div>
+  </div>
+</ng-template>
