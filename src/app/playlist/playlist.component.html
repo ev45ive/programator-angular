@@ -1,6 +1,11 @@
 {{ mode }}
 
-<ng-template [ngIf]="this.mode === 'show'" [ngIfElse]="formTplPlacki">
+
+
+<ng-template [ngIf]="this.mode === 'show'" [ngIfThen]="showTpl" [ngIfElse]="formTplPlacki"></ng-template>
+
+
+<ng-template #showTpl>
   <div class="card">
     <div class="card-body">
       <dl>
@@ -26,11 +31,6 @@
     </div>
   </div>
 </ng-template>
-
-
-
-<!-- ... -->
-
 
 <ng-template #formTplPlacki>
   <div class="card">
