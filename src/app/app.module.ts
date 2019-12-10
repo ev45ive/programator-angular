@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { StadionModule } from './stadion/stadion.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { PlaylistComponent } from './playlist/playlist.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StadionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

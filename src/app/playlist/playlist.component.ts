@@ -33,12 +33,12 @@ export class PlaylistComponent {
     },
   ];
 
-  playlist: Playlist = {
-    id: 123,
-    name: "Placki",
-    color: "#ff00ff",
-    favorite: false
-  };
+  playlist: Playlist = this.playlists[1]
+
+
+  select(p:Playlist){
+    this.playlist = p
+  }
 
   edit() {
     this.mode = "edit";
@@ -51,10 +51,10 @@ export class PlaylistComponent {
   constructor(cdr: ChangeDetectorRef) {
     // cdr.detectChanges()
 
-    setInterval(()=>{
-      const last = this.playlists.pop()
-      this.playlists.unshift(last)
-    },1000 )
+    // setInterval(()=>{
+    //   const last = this.playlists.pop()
+    //   this.playlists.unshift(last)
+    // },1000 )
   }
 
   ngOnInit() {}
