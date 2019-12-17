@@ -1,0 +1,16 @@
+<div class="input-group">
+  <textarea
+    cols="30"
+    rows="1"
+    class="form-control"
+    [value]="comment.body"
+    (input)="bodyInput( $event.target.value )"
+  >
+  </textarea>
+
+  <div class="input-group-append">
+    <span class="input-group-text"> {{ comment.body.length }} / 170 </span>
+
+    <input type="button" value="Comment!" class="btn btn-outline-secondary" (click)="send()" />
+  </div>
+</div>

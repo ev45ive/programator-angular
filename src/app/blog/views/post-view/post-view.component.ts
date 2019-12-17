@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Post } from "../../Post";
+import { Post, Comment } from "../../Post";
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute } from "@angular/router";
 
@@ -14,7 +14,22 @@ export class PostViewComponent implements OnInit {
 
   constructor(public route: ActivatedRoute, public http: HttpClient) {}
 
+  addComment(comment: Comment) {
+    comment.userId = this.post.userId;
+    comment.name = this.post.user.name;
+    comment.email = this.post.user.email;
+    comment.postId = this.post.id;
+    this.http.post(`${this.url}comments/`, comment).subscribe(resp => {
+      console.log(resp);
+      this.fetchPost();
+    });
+  }
+
   ngOnInit() {
+    this.fetchPost();
+  }
+
+  fetchPost() {
     const post_id = this.route.snapshot.paramMap.get("post_id");
     // ==
     this.http
@@ -25,5 +40,11 @@ export class PostViewComponent implements OnInit {
         }
       })
       .subscribe(post => (this.post = post));
+  }
+
+  removeComment(comment: Comment) {
+    this.http.delete(`${this.url}comments/${comment.id}`).subscribe(resp => {
+      this.fetchPost();
+    });
   }
 }

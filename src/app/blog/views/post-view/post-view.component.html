@@ -23,12 +23,16 @@
     <h3>Comments</h3>
 
     <div class="list-group">
-      <!-- <input type="text" [value]="comment.title"> -->
+      <app-post-comment-editor 
+        (addComment)=" addComment($event) "
+      class="list-group-item">
+      </app-post-comment-editor>
 
       <app-post-comment
         class="list-group-item"
         *ngFor="let data of post.comments"
         [comment]="data"
+        (remove)="removeComment(data)"
       >
       </app-post-comment>
     </div>
