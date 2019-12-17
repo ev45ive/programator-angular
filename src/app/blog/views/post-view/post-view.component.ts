@@ -21,7 +21,7 @@ export class PostViewComponent implements OnInit {
       .get<Post>(`${this.url}posts/${post_id}`, {
         params: {
           _expand: "user",
-          _embed: "comments",
+          _embed: "comments"
         }
       })
       .subscribe(post => (this.post = post));
