@@ -43,6 +43,7 @@ export class PostViewComponent implements OnInit {
   }
 
   removeComment(comment: Comment) {
+    
     this.http.delete(`${this.url}comments/${comment.id}`).subscribe(resp => {
       this.fetchPost();
     });
