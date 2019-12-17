@@ -6,6 +6,11 @@ import { MapaStadionuComponent } from "./stadion/views/mapa-stadionu/mapa-stadio
 const routes: Routes = [
   {
     path: "",
+    pathMatch: "full",
+    redirectTo: "blog"
+  },
+  {
+    path: "playlists",
     component: PlaylistComponent
   },
   {

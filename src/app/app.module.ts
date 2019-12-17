@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { StadionModule } from './stadion/stadion.module';
+import { BlogModule } from './blog/blog.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { StadionModule } from './stadion/stadion.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StadionModule
+    StadionModule,
+    BlogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
