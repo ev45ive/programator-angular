@@ -10,6 +10,7 @@ export interface Post {
 }
 
 export interface Comment {
+  postId: string;
   userId?: any;
   id: string;
   name: string;
