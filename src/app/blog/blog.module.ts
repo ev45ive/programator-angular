@@ -10,6 +10,7 @@ import { PostCommentEditorComponent } from './components/post-comment-editor/pos
 import { PostsSearchViewComponent } from './views/posts-search-view/posts-search-view.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { PostsGridComponent } from './components/posts-grid/posts-grid.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PostsGridComponent } from './components/posts-grid/posts-grid.component
   imports: [
     CommonModule,
     BlogRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers:[
     {

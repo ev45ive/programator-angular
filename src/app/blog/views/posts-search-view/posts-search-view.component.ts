@@ -13,8 +13,10 @@ export class PostsSearchViewComponent implements OnInit {
 
   constructor(private searchService: SearchPostsService) {}
 
-  ngOnInit() {
-    this.searchService.search().subscribe({
+  search(query: string) {
+    
+    this.searchService.search(query)
+    .subscribe({
       next: posts => {
         console.log(posts);
         this.posts = posts;
@@ -23,6 +25,8 @@ export class PostsSearchViewComponent implements OnInit {
       complete: () => console.log("completed")
     });
   }
+
+  ngOnInit() {}
 }
 
 /* 
