@@ -7,6 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostViewComponent } from './views/post-view/post-view.component';
 import { PostCommentComponent } from './components/post-comment/post-comment.component';
 import { PostCommentEditorComponent } from './components/post-comment-editor/post-comment-editor.component';
+import { PostsSearchViewComponent } from './views/posts-search-view/posts-search-view.component';
+import { SearchFormComponent } from './components/search-form/search-form.component';
+import { PostsGridComponent } from './components/posts-grid/posts-grid.component';
 
 
 @NgModule({
@@ -14,12 +17,21 @@ import { PostCommentEditorComponent } from './components/post-comment-editor/pos
     PostsViewComponent,
     PostViewComponent,
     PostCommentComponent,
-    PostCommentEditorComponent
+    PostCommentEditorComponent,
+    PostsSearchViewComponent,
+    SearchFormComponent,
+    PostsGridComponent
   ],
   imports: [
     CommonModule,
     BlogRoutingModule,
     HttpClientModule
+  ],
+  providers:[
+    {
+      provide:'API_URL',
+      useValue:'http://localhost:3000/'
+    }
   ]
 })
 export class BlogModule { }

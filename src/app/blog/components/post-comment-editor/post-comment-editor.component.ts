@@ -8,6 +8,8 @@ import { Comment } from "../../Post";
 })
 export class PostCommentEditorComponent implements OnInit {
   comment: Comment = {
+    postId: null,
+    userId: null,
     id: null,
     body: "",
     email: "",
@@ -18,7 +20,6 @@ export class PostCommentEditorComponent implements OnInit {
   addComment = new EventEmitter();
 
   send() {
-    
     this.addComment.emit(this.comment);
     this.comment = {
       id: null,

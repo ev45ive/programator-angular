@@ -13,10 +13,10 @@ const routes: Routes = [
     path: "playlists",
     component: PlaylistComponent
   },
-  {
-    path: "stadion",
-    component: MapaStadionuComponent
-  }
+  // {
+  //   path: "stadion",
+  //   component: MapaStadionuComponent
+  // }
 ];
 
 @NgModule({
