@@ -1,5 +1,10 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-
+import {
+  map,
+  filter,
+  distinctUntilChanged,
+  debounceTime
+} from "rxjs/operators";
 import { FormGroup, FormControl } from "@angular/forms";
 
 @Component({
@@ -21,13 +26,19 @@ export class SearchFormComponent implements OnInit {
 
     const valueChanges = this.queryForm.get("query").valueChanges;
 
-    valueChanges.subscribe({
-      next: value => {
-        console.log(value);
-
-        this.searchChange.emit(value);
-      }
-    });
+    // https://rxmarbles.com/
+    valueChanges
+      .pipe(
+        map(v => v.trim()),
+        filter(v => v.length >= 3),
+        distinctUntilChanged(),
+        debounceTime(400)
+      )
+      .subscribe({
+        next: value => {
+          this.searchChange.emit(value);
+        }
+      });
   }
 
   ngOnInit() {}

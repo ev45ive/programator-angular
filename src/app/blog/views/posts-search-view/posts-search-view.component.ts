@@ -14,16 +14,16 @@ export class PostsSearchViewComponent implements OnInit {
   constructor(private searchService: SearchPostsService) {}
 
   search(query: string) {
-    
     this.searchService.search(query)
-    .subscribe({
-      next: posts => {
-        console.log(posts);
-        this.posts = posts;
-      },
-      error: err => console.log(err),
-      complete: () => console.log("completed")
-    });
+      // .pipe()
+      .subscribe({
+        next: posts => {
+          console.log(posts);
+          this.posts = posts;
+        },
+        error: err => console.log(err),
+        complete: () => console.log("completed")
+      });
   }
 
   ngOnInit() {}

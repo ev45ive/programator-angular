@@ -1,6 +1,10 @@
 import { Injectable, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Post } from "../Post";
+import { Post, Post } from "../Post";
+import { of } from "rxjs";
+
+import dane from "../../../../db-1576606331233.json";
+// "resolveJsonModule": true, w tsconfig.json
 
 @Injectable({
   providedIn: "root"
@@ -12,7 +16,8 @@ export class SearchPostsService {
   ) {}
 
   search(query = "molestiae") {
-    
+    // return of(dane.posts);
+
     return this.http.get<Post[]>(this.api_url + "posts", {
       params: {
         q: query,
