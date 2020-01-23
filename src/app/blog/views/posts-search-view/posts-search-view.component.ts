@@ -17,17 +17,16 @@ export class PostsSearchViewComponent implements OnInit {
     this.searchService.search(query);
   }
 
-  sub: Subscription;
+  sub = new Subscription();
 
   ngOnInit() {
-    this.sub = this.searchService.resultsChange.subscribe({
-      next: posts => {
-        console.log(posts);
-        this.posts = posts;
-      },
-      error: err => console.log(err),
-      complete: () => console.log("completed")
-    });
+    this.sub.add(
+      this.searchService.resultsChange.subscribe({
+        next: posts => {
+          this.posts = posts;
+        }
+      })
+    );
   }
 
   ngOnDestroy() {
