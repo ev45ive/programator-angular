@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { SearchPostsService } from "../../services/search-posts.service";
 import { timer, interval, Subscription, Subject } from "rxjs";
 import { Post } from "../../Post";
-import { takeUntil } from "rxjs/operators";
+import { takeUntil, tap, map } from "rxjs/operators";
 
 @Component({
   selector: "app-posts-search-view",
@@ -10,7 +10,12 @@ import { takeUntil } from "rxjs/operators";
   styleUrls: ["./posts-search-view.component.scss"]
 })
 export class PostsSearchViewComponent implements OnInit {
-  posts: Post[];
+  posts: Post[] = [];
+
+  posts$ = this.searchService.resultsChange.pipe(
+    tap(console.log),
+    map(posts => (this.posts = posts))
+  );
 
   constructor(private searchService: SearchPostsService) {}
 
@@ -18,20 +23,7 @@ export class PostsSearchViewComponent implements OnInit {
     this.searchService.search(query);
   }
 
-  // sub = new Subscription();
-  destroySignal = new Subject();
-
-  ngOnInit() {
-    this.searchService.resultsChange
-      .pipe(takeUntil(this.destroySignal))
-      .subscribe({
-        next: posts => (this.posts = posts)
-      });
-  }
-
-  ngOnDestroy() {
-    this.destroySignal.next();
-  }
+  ngOnInit() {}
 }
 
 /* 
