@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { SearchPostsService } from "../../services/search-posts.service";
-import { timer, interval, Subscription } from "rxjs";
+import { timer, interval, Subscription, Subject } from "rxjs";
 import { Post } from "../../Post";
+import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "app-posts-search-view",
@@ -17,20 +18,19 @@ export class PostsSearchViewComponent implements OnInit {
     this.searchService.search(query);
   }
 
-  sub = new Subscription();
+  // sub = new Subscription();
+  destroySignal = new Subject();
 
   ngOnInit() {
-    this.sub.add(
-      this.searchService.resultsChange.subscribe({
-        next: posts => {
-          this.posts = posts;
-        }
-      })
-    );
+    this.searchService.resultsChange
+      .pipe(takeUntil(this.destroySignal))
+      .subscribe({
+        next: posts => (this.posts = posts)
+      });
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.destroySignal.next();
   }
 }
 
