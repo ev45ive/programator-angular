@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col">
+    <app-posts-search-view></app-posts-search-view>
+  </div>
+  <div class="col">
+    <button (click)="hide = !hide">Toggle {{hide}}</button>
+    <app-posts-search-view *ngIf="hide"></app-posts-search-view>
+  </div>
+</div>

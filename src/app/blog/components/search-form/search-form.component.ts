@@ -29,10 +29,10 @@ export class SearchFormComponent implements OnInit {
     // https://rxmarbles.com/
     valueChanges
       .pipe(
+        debounceTime(400),
         map(v => v.trim()),
         filter(v => v.length >= 3),
         distinctUntilChanged(),
-        debounceTime(400)
       )
       .subscribe({
         next: value => {

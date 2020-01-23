@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { PostsViewComponent } from "./views/posts-view/posts-view.component";
 import { PostViewComponent } from "./views/post-view/post-view.component";
 import { PostsSearchViewComponent } from './views/posts-search-view/posts-search-view.component';
+import { SyncSearchComponent } from './views/sync-search/sync-search.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: "search",
     component: PostsSearchViewComponent
+  },
+  {
+    path: "sync",
+    component: SyncSearchComponent
   }
 ];
 

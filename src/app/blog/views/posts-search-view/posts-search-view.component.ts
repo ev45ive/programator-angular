@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { SearchPostsService } from "../../services/search-posts.service";
-import { timer, interval } from "rxjs";
+import { timer, interval, Subscription } from "rxjs";
 import { Post } from "../../Post";
 
 @Component({
@@ -14,19 +14,25 @@ export class PostsSearchViewComponent implements OnInit {
   constructor(private searchService: SearchPostsService) {}
 
   search(query: string) {
-    this.searchService.search(query)
-      // .pipe()
-      .subscribe({
-        next: posts => {
-          console.log(posts);
-          this.posts = posts;
-        },
-        error: err => console.log(err),
-        complete: () => console.log("completed")
-      });
+    this.searchService.search(query);
   }
 
-  ngOnInit() {}
+  sub: Subscription;
+
+  ngOnInit() {
+    this.sub = this.searchService.resultsChange.subscribe({
+      next: posts => {
+        console.log(posts);
+        this.posts = posts;
+      },
+      error: err => console.log(err),
+      complete: () => console.log("completed")
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }
 
 /* 
