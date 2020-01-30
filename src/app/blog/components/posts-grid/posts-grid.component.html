@@ -1,25 +1,21 @@
 <div class="card-group">
-
   <div class="card" *ngFor="let post of posts">
-
     <!-- <img src="https://www.placecage.com/c/200/300" class="card-img-top" alt="..." /> -->
 
     <div class="card-body">
       <h5 class="card-title">
-        {{post.title}}
+        {{ post.title }}
       </h5>
-     
+
       <div class="card-text">
-        {{post.body}}
+        {{ post.body }}
       </div>
     </div>
   </div>
-
-  
 </div>
 
 <style>
-  .card{
+  .card {
     min-width: 25%;
   }
 </style>

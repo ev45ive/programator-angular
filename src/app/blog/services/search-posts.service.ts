@@ -37,7 +37,9 @@ export class SearchPostsService {
     @Inject(API_URL) private api_url: string,
     private http: HttpClient
   ) {
-    (window as any).subject = this.resultsChange;
+    // (window as any).subject = this.resultsChange;
+
+    console.log("SearchPostsService");
   }
 
   search(query = "molestiae") {
@@ -51,6 +53,8 @@ export class SearchPostsService {
       })
       .subscribe(posts => {
         // this.resultsCache = posts;
+
+        console.log("result from server");
         this.resultsChange.next(posts);
       });
   }

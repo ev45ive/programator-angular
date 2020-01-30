@@ -13,6 +13,7 @@ import { PostsGridComponent } from "./components/posts-grid/posts-grid.component
 import { ReactiveFormsModule } from "@angular/forms";
 import { SyncSearchComponent } from "./views/sync-search/sync-search.component";
 import { API_URL } from './tokens';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { API_URL } from './tokens';
     CommonModule,
     BlogRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [
     {

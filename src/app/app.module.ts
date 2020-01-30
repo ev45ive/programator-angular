@@ -10,7 +10,7 @@ import { BlogModule } from './blog/blog.module';
 @NgModule({
   declarations: [
     AppComponent,
-    PlaylistComponent
+    PlaylistComponent,
   ],
   imports: [
     BrowserModule,

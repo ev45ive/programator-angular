@@ -10,9 +10,12 @@
 <div class="row">
   <div class="col">
 
-    <button (click)="hide = !hide">Toggle {{hide}}</button>
-   
-    <app-posts-grid  *ngIf="hide" [posts]="posts$ | async "></app-posts-grid>
+    <!-- <button (click)="hide = !hide">Toggle {{hide}}</button> -->
+   <!-- *ngIf="hide" -->
+
+   <p>Found {{ (posts$ | async)?.length }} results </p>
+
+    <app-posts-grid   [posts]="posts$ | async "></app-posts-grid>
 
   </div>
 </div>

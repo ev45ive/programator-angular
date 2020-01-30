@@ -13,7 +13,7 @@ export class PostsSearchViewComponent implements OnInit {
   posts: Post[] = [];
 
   posts$ = this.searchService.resultsChange.pipe(
-    tap(console.log),
+    // tap(console.log),
     map(posts => (this.posts = posts))
   );
 
@@ -23,7 +23,13 @@ export class PostsSearchViewComponent implements OnInit {
     this.searchService.search(query);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("ngOnInit");
+  }
+
+  ngOnDestroy() {
+    console.log("ngOnDestroy");
+  }
 }
 
 /* 
