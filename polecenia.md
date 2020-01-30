@@ -16,3 +16,16 @@ ng g c nazwa_komponentu
 json-server jsonplaceholder.typicode.com/db
 
 npm run ng -- g m blog -m app --routing true --force true
+
+# GH Pages
+
+git subtree push --prefix site/ origin gh-pages
+
+
+# Netlify
+
+npm i -g netlify
+
+netlify deploy
+
+netlify.toml
