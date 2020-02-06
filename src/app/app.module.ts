@@ -7,6 +7,12 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { StadionModule } from './stadion/stadion.module';
 import { BlogModule } from './blog/blog.module';
 
+import { AngularFireModule } from '@angular/fire'
+// import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+import { FirechatModule } from './firechat/firechat.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,8 +21,12 @@ import { BlogModule } from './blog/blog.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireAnalyticsModule,
+    AngularFirestoreModule,
     // StadionModule,
-    BlogModule
+    BlogModule,
+    FirechatModule
   ],
   providers: [],
   bootstrap: [AppComponent]

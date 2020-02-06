@@ -1,0 +1,36 @@
+<p>chat works!</p>
+
+<input type="button" value="LogIn" (click)="login()">
+<input type="button" value="LogOut" (click)="logout()">
+
+<div class="list-group">
+  <div class="list-group-item" *ngFor="let post of items | async">
+    <span class="close float-right" (click)="removeItem(post.ref)"
+      >&times;</span
+    >
+    <!-- {{ post.id }} -->
+    <h4 (click)="selectpost(post.id)">{{ post.data.title }}</h4>
+    <p>{{ post.data.body }}</p>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Title</label>
+  <input type="text" class="form-control" [(ngModel)]="post.title" />
+</div>
+
+<div class="form-group">
+  <textarea class="form-control" [(ngModel)]="post.body"></textarea>
+</div>
+
+<div class="form-group">
+  <input type="button" value="Add Post" (click)="addItem()" />
+</div>
+
+<div *ngIf="selected">
+  <div class="list-group">
+    <div class="list-group-item" *ngFor="let comment of comments | async">
+      {{ comment | json }}
+    </div>
+  </div>
+</div>
